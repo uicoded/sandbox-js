@@ -10,7 +10,7 @@ var p1 = {
 	_counter: 0,
 
 	get name(){
-		console.log('Name accessed'+ ++this._counter);
+		console.log('Name accessed '+ ++this._counter + 'x');
 		return this._name;
 	},
 	set name(val){
@@ -31,7 +31,7 @@ var p1 = {
 	_counter: 0,
 
 	get name(){
-		console.log('Name accessed'+ ++this._counter);
+		console.log('Name accessed '+ ++this._counter + 'x');
 		return this._name;
 	}
 };
