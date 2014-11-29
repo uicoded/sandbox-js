@@ -30,6 +30,30 @@ var alice = new Person("Alice");
 bob.lastName === "Howard"	//true
 alice.lastName === "Howard" //true
 
+// HOWEVER
+// If you write the prototype WITH property it WORKS!  (why? see prototypes with contructor)
+Person.prototype.lastName = "Howard2";
+bob.lastName == "Howard2"  //true
+
+
+// Prototype can be extended but existing properties are immutable?
+
+function Person(name){
+	this.name = name || 'Adam';
+	this.sayHello = function() {
+		console.log('Hi my name is '+ this.name);
+	};
+}
+
+Person.prototype.name = 'Eve';
+Person.prototype.sayHello = function(){
+	console.log('Hi there this is Eve');
+};
+
+var p1 = new Person();
+// p1.name == 'Eve'	// nope still Adam
+
+
 /*
 http://en.wikipedia.org/wiki/Prototype-based_programming
 
@@ -49,8 +73,8 @@ more traditional class based languages would be able to use it), it’s really j
 a function that knows how to add the right properties and methods to create a particular type of object.
 
 This approach is called prototype-based inheritance because an existing object
-is used as a template (or a prototype – a typical example) to build other objects. 
-The existing object will be used as a starting point to build the new object but 
+is used as a template (or a prototype – a typical example) to build other objects.
+The existing object will be used as a starting point to build the new object but
 the new object does not have to be exactly the same.
 */
 
@@ -61,11 +85,11 @@ function Pet(name, species, hello){
     this.species = species;
     this.hello = hello;
 }
- 
+
 Pet.prototype.sayHello = function(){
     alert(this.hello);
 }
- 
+
 var rufus = new Pet("Rufus", "cat", "Miaow!");
 rufus.sayHello();
 
@@ -91,7 +115,7 @@ Pet.prototype = {
 	{
 		alert(this.hello);
 	}
-}
+};
 
 
 /**/
@@ -114,11 +138,11 @@ Cat.prototype = new Pet();				// Is there a diference with: Cat.prototype = Pet.
 
 Cat.prototype.catNap = function(){
 	alert(this.name + ": zzzzz...");
-}
+};
 Cat.prototype.sayHello = function(){
 	alert(this.hello + " from a cat..");
-}
-	
+};
+
 var rufus = new Cat("rufus", "miaow", "Maine Coon", 7);
 rufus.sayHello();
 rufus.catNap();

@@ -1,19 +1,19 @@
 // http://code.tutsplus.com/tutorials/javascript-objects--net-35979
 
-// Create a codyA object using the Object() constructor.
- 
-var bob = new Object();
-bob.living = true;
-bob.age = 33;
-bob.gender = 'male';
-bob.getGender = function () { return bob.gender; };
+// Create a Bob object using the Object() constructor.
 
-console.log(bob); // Logs Object {living=true, age=33, gender="male", ...}
+var p1 = new Object();
+p1.living = true;
+p1.age = 33;
+p1.gender = 'male';
+p1.getGender = function () { return p1.gender; };
+
+console.log(p1); // Logs Object {living=true, age=33, gender="male", ...}
 
 /*
- The same cody object is created below, but instead of using the native Object() constructor
- to create a one-off cody, we first define our own Person() constructor that can create a cody object
-  (and any other Person object we like) and then instantiate it with "new". 
+ The same p1ek object is created below, but instead of using the native Object() constructor
+ to create a one-off p2, we first define our own Person() constructor that can create a p2 object
+  (and any other Person object we like) and then instantiate it with "new".
 */
 
 var Person = function (living, age, gender) {
@@ -23,14 +23,14 @@ var Person = function (living, age, gender) {
     this.getGender = function () { return this.gender; };
 };
 
-var bobek = new Person(true, 33, 'male');
+var p2 = new Person(true, 23, 'male');
 
-console.log(bobek); // Logs Object {living=true, age=33, gender="male", ...}
+console.log(p2); // Logs Object {living=true, age=23, gender="male", ...}
 
 /*
- The main difference between the codyA and codyB objects is not found in the object itself,
- but in the constructor functions used to produce the objects. The codyA object was produced
- using an instance of the Object() constructor. The Person() constructor produced codyB,
+ The main difference between the p1 and p2 objects is not found in the object itself,
+ but in the constructor functions used to produce the objects. The Bob object was produced
+ using an instance of the Object() constructor. The Person() constructor produced p2,
   but can also be used as a powerful, centrally defined object "factory" to be used for
   creating more Person() objects. Crafting your own constructors for producing custom objects
   also sets up prototypal inheritance for Person() instances.
