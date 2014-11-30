@@ -9,26 +9,26 @@ function Person(name){
 var bob = new Person("Bob");
 var alice = new Person("Alice");
 
-// Bob gets formal name
+// Bob gets more formal name
 bob.name = "Robert";
 
 // Alice keeps her name, no surprise. There are two separate instances of Person
 
-/* Prototype property, link to constructor Object */
-// Assigning object will ...
-Person.prototype = {
-	lastName : "Howard"
-};
-console.log( 'Bob is right now: ' + bob.lastName );		// Bob is right now undefined
+// Assigning new property as Object will not work (destroys the prototype object)
+//Person.prototype = {
+//	lastName : "Howard"
+//};
+//console.log( alice.name + ' is right now: ' + alice.lastName );		// Alice is right now Howard
+//console.log( bob.name + ' is right now: ' + bob.lastName );			// Robert is right now Howard
 
 // HOWEVER
-// If you write the prototype WITH property it WORKS!  (why? see prototypes with constructor)
+// If you assign a property to prototype it WORKS (why? see prototypes with constructor)
 Person.prototype.lastName = "Howard";
-console.log( 'Bob is right now: ' + bob.lastName );		// Bob is right now Howard (so is Alice)
+console.log( bob.name + ' is right now: ' + bob.lastName );			// Robert is right now Howard
+console.log( alice.name + ' is right now: ' + alice.lastName );		// Alice is right now Howard
 
 
 // Prototype can be extended but existing properties are immutable?
-
 function Person(name){
 	this.name = name || 'Adam';
 	this.sayHello = function() {
@@ -36,20 +36,20 @@ function Person(name){
 	};
 }
 
-// existing are not!
+// existing properties are not!
 Person.prototype.name = 'Eve';
 Person.prototype.sayHello = function(){
 	console.log('Hi there this is Eve');
 };
 // newly created are
 Person.prototype.sign = function () {
-	console.log('Writing: ' + this.name);
+	console.log('Signing: ' + this.name);
 };
 
 var p1 = new Person();
 console.log( p1.name );		// still Adam
 p1.sayHello();				// Hi my name is Adam
-p1.sign();					// Writing: Adam
+p1.sign();					// Signing: Adam
 
 
 
@@ -110,8 +110,7 @@ function Pet(name, species, hello){
 }
 
 Pet.prototype = {
-	sayHello : function()
-	{
+	sayHello : function(){
 		alert(this.hello);
 	}
 };
@@ -133,7 +132,7 @@ function Cat(name, hello, breed, whiskerLength){
 }
 /**/
 
-Cat.prototype = new Pet();				// Is there a diference with: Cat.prototype = Pet.prototype;
+Cat.prototype = new Pet();				// Is there a difference with: Cat.prototype = Pet.prototype;
 
 Cat.prototype.catNap = function(){
 	alert(this.name + ": zzzzz...");
