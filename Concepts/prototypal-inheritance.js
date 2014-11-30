@@ -3,7 +3,7 @@
 // Construction Function
 function Person(name){
 	this.name = name;
-};
+}
 
 // Create instance object and store to local variable
 var bob = new Person("Bob");
@@ -15,25 +15,16 @@ bob.name = "Robert";
 // Alice keeps her name, no surprise. There are two separate instances of Person
 
 /* Prototype property, link to constructor Object */
+// Assigning object will ...
 Person.prototype = {
 	lastName : "Howard"
 };
-
-// If defined after bob and alice instances they will not inherit it.
-// bob.lastName == undefined
-// Try again
-
-// Create instance object and store to local variable
-var bob = new Person("Bob");
-var alice = new Person("Alice");
-
-bob.lastName === "Howard"	//true
-alice.lastName === "Howard" //true
+console.log( 'Bob is right now: ' + bob.lastName );		// Bob is right now undefined
 
 // HOWEVER
-// If you write the prototype WITH property it WORKS!  (why? see prototypes with contructor)
-Person.prototype.lastName = "Howard2";
-bob.lastName == "Howard2"  //true
+// If you write the prototype WITH property it WORKS!  (why? see prototypes with constructor)
+Person.prototype.lastName = "Howard";
+console.log( 'Bob is right now: ' + bob.lastName );		// Bob is right now Howard (so is Alice)
 
 
 // Prototype can be extended but existing properties are immutable?
@@ -45,13 +36,21 @@ function Person(name){
 	};
 }
 
+// existing are not!
 Person.prototype.name = 'Eve';
 Person.prototype.sayHello = function(){
 	console.log('Hi there this is Eve');
 };
+// newly created are
+Person.prototype.sign = function () {
+	console.log('Writing: ' + this.name);
+};
 
 var p1 = new Person();
-// p1.name == 'Eve'	// nope still Adam
+console.log( p1.name );		// still Adam
+p1.sayHello();				// Hi my name is Adam
+p1.sign();					// Writing: Adam
+
 
 
 /*
@@ -118,7 +117,7 @@ Pet.prototype = {
 };
 
 
-/**/
+/* constructor stealing */
 function Cat(name, hello, breed, whiskerLength){
 	Pet.call(this, name, "cat", hello);
 	this.breed = breed;
