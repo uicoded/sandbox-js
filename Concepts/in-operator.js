@@ -16,7 +16,7 @@ console.log( "Object", ("length" in object) );
 console.log( "Array", ("length" in array) );
 console.log( "String", ("length" in string) );
 console.log( "Date", ("length" in date) );
-console.log( "Number", ("length" in number) ); 
+console.log( "Number", ("length" in number) );
 
 var trees = new Array("redwood", "bay", "cedar", "oak", "maple");
 console.log( 0 in trees );       		// returns true
@@ -32,8 +32,8 @@ delete trees[3];
 console.log( 3 in trees ); 				// returns false
 
 var car = {make: "Honda", model: "Odyssey", year: 2015};
-delete car.make;
-console.log( "make" in car );  			// returns false
+delete car.year;
+console.log( "year" in car );  			// returns false
 
 // If you set a property to undefined but do not delete it, the in operator returns true for that property.
 var trees = new Array("redwood", "bay", "cedar", "oak", "maple");
@@ -41,5 +41,5 @@ trees[3] = undefined;
 console.log( 3 in trees ); 				// returns true
 
 var car = {make: "Honda", model: "Odyssey", year: 2015};
-console.log(car.make = undefined;
-console.log( "make" in car );  			// returns true
+car.year = undefined;
+console.log( "year" in car );  			// returns true

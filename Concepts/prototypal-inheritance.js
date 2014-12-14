@@ -144,3 +144,45 @@ Cat.prototype.sayHello = function(){
 var rufus = new Cat("rufus", "miaow", "Maine Coon", 7);
 rufus.sayHello();
 rufus.catNap();
+
+
+
+/*
+
+Compare
+
+*/
+
+function Car(color, direction, speed){
+	this.make = color || 'white';
+	this.direction = direction || 'N';
+	this.speed = speed || 0;
+	this.gas = function( amount ){
+		this.speed = this.speed + amount;
+	};
+	this.break = function( amount ){
+		this.speed = this.speed - amount;
+	};
+}
+
+// VS
+
+function Car(color, direction, speed){
+	this.make = color || 'white';
+	this.direction = direction || 'N';
+	this.speed = speed || 0;
+}
+
+Car.prototype.gas = function( amount ){
+	this.speed = this.speed + amount;
+};
+Car.prototype.break = function( amount ){
+	this.speed = this.speed - amount;
+};
+
+
+var c1 = new Car('pink');
+var c2 = new Car('teal');
+
+// See the console. First way is more memory heavy gas and break method is defined on every instance
+// The second example the methods are reused (inherited) from prototype.

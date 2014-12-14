@@ -21,6 +21,20 @@ Person.prototype = Object.create(Object.prototype, {
 	}
 });
 
+/**
+ * Bias - not really
+ *
+ * The constructor make you think OO classical style and becomes analogous to a class.
+ * Two best features of JS are ignored: dynamic object extension and prototypal inheritance.
+ * The two combined create much more powerful and flexible way to reuse code than classical inheritance!
+ *
+ * Constructors are waste of time and energy (confirm: Programming JS Applications p:51)
+ * They are completely unnecessary.
+ *
+ * Continue to see some factory pattern.
+ */
+
+
 /*
  Object Attributes - JS Definite Guide p:135
 
