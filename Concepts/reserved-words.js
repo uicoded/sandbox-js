@@ -1,18 +1,15 @@
 /*
-Reserved Words
+Reserved Words As of ECMAScript 6
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Reserved_Words
 */
 
 // break
 // case
+// class
 // catch
+// const
 // continue
-// debugger
-// default
-// delete
-// do
-// else
 // case
 // catch
 // continue
@@ -21,31 +18,19 @@ Reserved Words
 // delete
 // do
 // else
+// export
+// extends
 // finally
 // for
 // function
 // if
 // in
+// inport
 // instanceof
+// let
 // new
 // return
-// switch
-// case
-// catch
-// continue
-// debugger
-// default
-// delete
-// do
-// else
-// finally
-// for
-// function
-// if
-// in
-// instanceof
-// new
-// return
+// super
 // switch
 // this
 // throw
@@ -55,3 +40,4 @@ Reserved Words
 // void
 // while
 // with
+// yield
